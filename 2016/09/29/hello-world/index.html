@@ -15,7 +15,7 @@
 <meta property="og:description" content="设置快捷键模板file–settings–live template –&amp;gt;javascript–添加快捷键–define
 创建指定的文件后缀–new–&amp;gt;edit file template–&amp;gt;+ –&amp;gt;设置文件扩展名和文件的名字即可
 安装markdown插件file–settings–plugin–browser responstory(下面第二个)–markdown nav">
-<meta property="og:updated_time" content="2016-09-29T10:03:03.398Z">
+<meta property="og:updated_time" content="2016-09-29T13:41:59.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angularJs">
 <meta name="twitter:description" content="设置快捷键模板file–settings–live template –&amp;gt;javascript–添加快捷键–define
@@ -96,12 +96,44 @@
 <h2 id="安装markdown插件"><a href="#安装markdown插件" class="headerlink" title="安装markdown插件"></a>安装markdown插件</h2><p>file–settings–plugin–browser responstory(下面第二个)–markdown navigator</p>
 <h2 id="框架和类库"><a href="#框架和类库" class="headerlink" title="框架和类库"></a>框架和类库</h2><p>什么是框什么是库？一个是提供房子的，一个只是给你提供方法，放东西的<br>框架：提供房子<br>库：只是提供一些方法</p>
 <h2 id="MVC-MVVM-双向数据绑定"><a href="#MVC-MVVM-双向数据绑定" class="headerlink" title="MVC MVVM(双向数据绑定)"></a>MVC MVVM(双向数据绑定)</h2><p>model–&gt;数据 view:视图  controller:控制图 </p>
+<p>MVVM   model:数据 view  viewModel:视图模型<br>命名空间的缺点   调用过长 ，不能完全避免不冲突<br>seajs(cmd)  requireJs(amd)  nodeJs(commonJs)</p>
+<h2 id="AngularJs安装"><a href="#AngularJs安装" class="headerlink" title="AngularJs安装"></a>AngularJs安装</h2><p>npm表示node package manager 我们安装node就会提供一个包管理器<br>安装软件的名字不能叫同名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install angular</div></pre></td></tr></table></figure></p>
+<h2 id="防止闪烁"><a href="#防止闪烁" class="headerlink" title="防止闪烁"></a>防止闪烁</h2><p>ng-bind<br>ng-bind-template<br>ng-clock</p>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>声明模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var app = angular.model(&apos;appName&apos;,[],fn);</div><div class="line">//参数的位置可以改变，但是名字不能变</div><div class="line">app.run([&apos;$rootScope&apos;,function()&#123;&#125;]);</div><div class="line">app.controller(&apos;ctrlName&apos;,[&apos;$rootScope&apos;,&apos;$scope&apos;,function($rootScope,$scope)&#123; //$scope实现双向绑定的桥梁viewModel</div><div class="line"></div><div class="line">&#125;]);</div></pre></td></tr></table></figure></p>
+<p>在标签上增加ng-controller指定控制器的作用范围</p>
+<h2 id="ng-disabled禁用"><a href="#ng-disabled禁用" class="headerlink" title="ng-disabled禁用"></a>ng-disabled禁用</h2><p>所有表单元素向双向绑定必须增加ng-model属性</p>
+<h2 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h2><p>filter 为false过滤掉<br>find 找到为true的那一项<br>forEach 遍历<br>map 映射新的数组</p>
+<h2 id="控制器的特点"><a href="#控制器的特点" class="headerlink" title="控制器的特点"></a>控制器的特点</h2><p>1.创建控制器会有一个$scope，我们把数据挂载在$scope就可以实现数据的双向绑定(在控制器申明的属性元素，可以在当前的作用域下获取到)<br>2.依赖注入<br>3.DOM控制器的作用是平行的<br>4.控制器可以嵌套使用，注意嵌套的是DOM标签<br>5.控制器不能复用，而且作用的不仅是控制（不要操作DOM）中的唯一操作的地方是link函数</p>
+<h2 id="指令-directive"><a href="#指令-directive" class="headerlink" title="指令(directive)"></a>指令(directive)</h2><p>指令是不依赖控制器的（一般是依赖控制器的）<br>扩展功能 封装插件<br>装饰指令（美化，增加功能）<br>组件指令（编译出代码片段实现例如弹框，表格）</p>
+<h2 id="指令依赖与控制器吗？"><a href="#指令依赖与控制器吗？" class="headerlink" title="指令依赖与控制器吗？"></a>指令依赖与控制器吗？</h2><p>指令可以完全不依赖于控制器<br>通过模块来创建指令即可</p>
+<h2 id="API文档-ng-show-ng-hide-ng-if"><a href="#API文档-ng-show-ng-hide-ng-if" class="headerlink" title="API文档(ng-show/ng-hide/ng-if)"></a>API文档(ng-show/ng-hide/ng-if)</h2><p>ng-show ng-hide只是简单的操作样式 会强制执行所有的代码<br>ng-if 如果不满足条件则内部代码都不运行  （是会产生独立的作用域的）<br>频繁切换使用ng-show ng-hide 第一次消耗比较大<br>ng-if如果不满足内部指令不执行，但是频繁切换时性能消耗较大，搭配ng-repeat判断数据是否存在</p>
+<h2 id="四种可以限制范围restrict：EAMC"><a href="#四种可以限制范围restrict：EAMC" class="headerlink" title="四种可以限制范围restrict：EAMC"></a>四种可以限制范围restrict：EAMC</h2><p>E：element   A：attribute<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;my-hello&gt;&lt;/my-hello&gt;</div><div class="line">&lt;div my-hello&gt;&lt;/div&gt;</div><div class="line">&lt;div class=&quot;my-hello&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;!--directive：my-hello--&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="指令中的scope"><a href="#指令中的scope" class="headerlink" title="指令中的scope"></a>指令中的scope</h2><p>-&gt;scope独立作用域<br>scope:{}      //断绝关系，无法继承作用域上的任何东西–完全断绝需要数据，只能通过指令的标签上的属性进行传递<br>-引用的是字符串 @（取到的是attr对应的字符串）<br>-引用的是变量  #(取到的是当前指令所在的作用域的变量)<br>-引用函数     &amp; 传递参数的时候使用对象格式<br>scope:true,   //这个叫不断绝关系</p>
+<h2 id="搭建静态博客"><a href="#搭建静态博客" class="headerlink" title="搭建静态博客"></a>搭建静态博客</h2><ul>
+<li>创建仓库，名字为</li>
+<li>yourname.github.io</li>
+</ul>
+<h2 id="g代表安装的命令可以在全局命令行下使用"><a href="#g代表安装的命令可以在全局命令行下使用" class="headerlink" title="-g代表安装的命令可以在全局命令行下使用"></a>-g代表安装的命令可以在全局命令行下使用</h2><ul>
+<li>在任意目录下都可以进行安装</li>
+</ul>
+<h2 id="安装hexo命令行工具"><a href="#安装hexo命令行工具" class="headerlink" title="安装hexo命令行工具"></a>安装hexo命令行工具</h2><ul>
+<li><p>mac下都需要使用sudo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化项目（写博客的位置）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init 你的文件夹的名字</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="启动服务开始写文章"><a href="#启动服务开始写文章" class="headerlink" title="启动服务开始写文章"></a>启动服务开始写文章</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure>
+<h2 id="安装发布插件"><a href="#安装发布插件" class="headerlink" title="安装发布插件"></a>安装发布插件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<h2 id="配置发布地址"><a href="#配置发布地址" class="headerlink" title="配置发布地址"></a>配置发布地址</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://名字:密码@github.com/用户名/用户名.github.io.git</div><div class="line">  branch: master</div><div class="line">  message: push</div></pre></td></tr></table></figure>
 <h2 id="第一次发布"><a href="#第一次发布" class="headerlink" title="第一次发布"></a>第一次发布</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy</div></pre></td></tr></table></figure>
 <h2 id="第二次发布"><a href="#第二次发布" class="headerlink" title="第二次发布"></a>第二次发布</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/29/hello-world/" data-id="cito6ag730000m4qwvzxebs2p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/09/29/hello-world/" data-id="cito6li0n0000qwqw8nzgsomh" class="article-share-link">Share</a>
       
       
     </footer>
